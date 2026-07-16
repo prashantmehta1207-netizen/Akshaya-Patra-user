@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Complaint Submitted Successfully</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #fbfbf8;
+            color: #111111;
+            padding: 28px 46px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .logo {
+            width: 220px;
+            height: auto;
+        }
+
+        .top-actions {
+            display: flex;
+            gap: 16px;
+        }
+
+        .pill {
+            min-height: 46px;
+            border-radius: 10px;
+            padding: 0 20px;
+            background: #ffffff;
+            box-shadow: 0 8px 22px rgba(15, 23, 42, 0.12);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            color: #263238;
+        }
+
+        .green-dot {
+            width: 13px;
+            height: 13px;
+            background: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 12px rgba(34, 197, 94, 0.5);
+        }
+
+        .center {
+            max-width: 760px;
+            margin: 18px auto 0;
+            text-align: center;
+        }
+
+        .success-graphic {
+            width: 210px;
+            height: 150px;
+            margin: auto;
+            position: relative;
+        }
+
+        .check-circle {
+            width: 108px;
+            height: 108px;
+            border-radius: 50%;
+            border: 7px solid #16a34a;
+            color: #16a34a;
+            display: grid;
+            place-items: center;
+            margin: auto;
+        }
+
+        .check-circle svg {
+            width: 64px;
+            height: 64px;
+            stroke-width: 4;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #b6953d;
+            transform: rotate(45deg);
+            border-radius: 1px;
+        }
+
+        .confetti.circle {
+            border-radius: 50%;
+            transform: none;
+            background: #4f9f68;
+        }
+
+        .c1 {
+            top: 12px;
+            left: 22px;
+        }
+
+        .c2 {
+            top: 38px;
+            left: 0;
+        }
+
+        .c3 {
+            top: 8px;
+            right: 32px;
+        }
+
+        .c4 {
+            top: 44px;
+            right: 2px;
+        }
+
+        .c5 {
+            bottom: 20px;
+            left: 36px;
+        }
+
+        .c6 {
+            bottom: 26px;
+            right: 42px;
+        }
+
+        .c7 {
+            top: 68px;
+            left: 18px;
+        }
+
+        .c8 {
+            top: 70px;
+            right: 16px;
+        }
+
+        h1 {
+            margin-top: 12px;
+            font-size: 30px;
+            color: #16a34a;
+        }
+
+        .dots {
+            color: #16a34a;
+            font-size: 22px;
+            letter-spacing: 7px;
+            margin: 6px 0 8px;
+        }
+
+        .subtitle {
+            font-size: 15px;
+            color: #475569;
+            margin-bottom: 22px;
+        }
+
+        .id-card {
+            width: 440px;
+            max-width: 100%;
+            min-height: 72px;
+            margin: 0 auto 22px;
+            background: #ffffff;
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: 92px 1fr 1.3fr;
+            align-items: center;
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+            border-left: 4px solid #16a34a;
+        }
+
+        .id-icon {
+            color: #16a34a;
+        }
+
+        .id-icon svg {
+            width: 44px;
+            height: 44px;
+        }
+
+        .id-label {
+            border-right: 1px solid #e5e7eb;
+            padding-right: 22px;
+            text-align: left;
+            font-size: 17px;
+            color: #334155;
+        }
+
+        .id-value {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: #111111;
+        }
+
+        .info-row {
+            width: 610px;
+            max-width: 100%;
+            margin: 0 auto 22px;
+            background: #ffffff;
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+            overflow: hidden;
+        }
+
+        .info-item {
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 18px;
+            border-right: 1px solid #e5e7eb;
+            text-align: left;
+        }
+
+        .info-item:last-child {
+            border-right: none;
+        }
+
+        .info-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #edf7ee;
+            color: #16a34a;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            box-shadow: inset 0 0 0 1px #d7eadc;
+        }
+
+        .info-item small {
+            display: block;
+            color: #6b7280;
+            margin-bottom: 5px;
+        }
+
+        .info-item strong {
+            font-size: 13px;
+            color: #111111;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            min-width: 220px;
+            border: none;
+            border-radius: 7px;
+            padding: 16px 24px;
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            box-shadow: 0 10px 22px rgba(15, 23, 42, 0.12);
+            transition: background 0.2s ease;
+        }
+
+        .track {
+            background: #16a34a;
+            color: #ffffff;
+        }
+
+        .track:hover {
+            background: #15803d;
+        }
+
+        .home {
+            background: #f1f5f9;
+            color: #475569;
+            border: 1px solid #cbd5e1;
+        }
+
+        .home:hover {
+            background: #e2e8f0;
+        }
+
+        .note {
+            width: fit-content;
+            max-width: 100%;
+            margin: auto;
+            background: #f0fdf4;
+            color: #16a34a;
+            padding: 10px 20px;
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            border: 1px solid #bbf7d0;
+        }
+
+        .note strong {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 20px;
+            }
+
+            .topbar {
+                align-items: center;
+                flex-direction: column;
+                gap: 18px;
+            }
+
+            .top-actions {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .id-card,
+            .info-row {
+                grid-template-columns: 1fr;
+                padding: 18px;
+                gap: 12px;
+            }
+
+            .id-label {
+                border-right: none;
+                text-align: center;
+                padding-right: 0;
+            }
+
+            .info-item {
+                border-right: none;
+                border-bottom: 1px solid #e5e7eb;
+            }
+
+            .info-item:last-child {
+                border-bottom: none;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="topbar">
+        <img src="logo.png" alt="Akshaya Patra Logo" class="logo" />
+        <div class="top-actions">
+            <div class="pill"><span class="green-dot"></span>WORKING</div>
+            <div class="pill"><i data-lucide="tag"></i>ASSET ID : AC001</div>
+        </div>
+    </header>
+
+    <main class="center">
+        <div class="success-graphic">
+            <span class="confetti c1"></span><span class="confetti circle c2"></span>
+            <span class="confetti c3"></span><span class="confetti circle c4"></span>
+            <span class="confetti c5"></span><span class="confetti circle c6"></span>
+            <span class="confetti circle c7"></span><span class="confetti c8"></span>
+            <div class="check-circle"><i data-lucide="check"></i></div>
+        </div>
+
+        <h1>Complaint Submitted Successfully!</h1>
+        <div class="dots">...</div>
+        <p class="subtitle">Thank you for reporting the issue. Our team will review it and take necessary action.</p>
+
+        <div class="id-card">
+            <div class="id-icon"><i data-lucide="clipboard-list"></i></div>
+            <div class="id-label">Complaint ID:</div>
+            <div class="id-value" id="complaint-id-display">Loading...</div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-item">
+                <div class="info-icon"><i data-lucide="calendar-days"></i></div>
+                <div><small>Date & Time</small><strong id="current-date-time">Loading...</strong></div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon"><i data-lucide="shield-check"></i></div>
+                <div><small>Status</small><strong>Registered</strong></div>
+            </div>
+            <div class="info-item">
+                <div class="info-icon"><i data-lucide="clock"></i></div>
+                <div><small>Estimated Response</small><strong>Within 24-72 Hours</strong></div>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <a href="track-complaint.html" class="btn track">
+                <i data-lucide="search"></i> TRACK COMPLAINT
+            </a>
+            <a href="index.html" class="btn home">
+                <i data-lucide="home"></i> BACK TO HOME
+            </a>
+        </div>
+
+        <p class="note">
+            <i data-lucide="info"></i>
+            <span>Note: Please save your <strong>Complaint ID</strong> for future reference to track your complaint
+                status.</span>
+        </p>
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        // 🔗 LocalStorage માંથી નવો સેવ થયેલો સીરીયલ ID મેળવો
+        const savedID = localStorage.getItem("myComplaintID");
+        const idDisplay = document.getElementById("complaint-id-display");
+        const trackBtn = document.querySelector(".btn.track");
+
+        if (savedID) {
+            // સ્ક્રીન પર નવો ID (e.g., CMP-0001) પ્રિન્ટ કરો
+            idDisplay.innerText = savedID;
+            // 🚀 ટ્રેકિંગ બટનની લિંક ડાયરેક્ટ ID સાથે સેટ કરો
+            trackBtn.href = `track-complaint.html?id=${savedID}`;
+        } else {
+            idDisplay.innerText = "N/A";
+            trackBtn.href = `track-complaint.html`;
+        }
+
+        // તારીખ અને સમય સેટ કરવાનું લોજિક
+        const now = new Date();
+        const options = { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true };
+        document.getElementById('current-date-time').innerText = now.toLocaleString('en-US', options);
+    </script>
+</body>
+
+</html>

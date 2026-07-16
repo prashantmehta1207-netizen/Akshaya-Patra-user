@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asset Details</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #fbfbf8;
+            color: #111111;
+            padding: 26px;
+        }
+
+        .page {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .topbar {
+            display: grid;
+            grid-template-columns: 220px 1fr auto;
+            align-items: center;
+            gap: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #0f7a35;
+        }
+
+        .logo {
+            width: 220px;
+            height: auto;
+        }
+
+        .title {
+            text-align: center;
+        }
+
+        .title h1 {
+            font-size: 36px;
+            color: #0f7a35;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pill {
+            min-height: 50px;
+            border-radius: 9px;
+            padding: 0 20px;
+            font-size: 18px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+        }
+
+        .asset-id {
+            background: linear-gradient(135deg, #0f7a35, #064d23);
+            color: #ffffff;
+            box-shadow: 0 8px 18px rgba(15, 122, 53, 0.25);
+        }
+
+        .content {
+            display: block;
+            padding: 32px 0;
+            border-bottom: 2px solid #0f7a35;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 20px;
+        }
+
+        .circle-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #0f7a35;
+            color: #ffffff;
+            display: grid;
+            place-items: center;
+        }
+
+        .circle-icon svg {
+            width: 26px;
+            height: 26px;
+        }
+
+        .section-title h2 {
+            font-size: 26px;
+            color: #111111;
+        }
+
+        .details-table {
+            background: #ffffff;
+            border: 1px solid #d7d7d7;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1.5fr 30px 2fr;
+            min-height: 54px;
+            align-items: center;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 18px;
+        }
+
+        .row:last-child {
+            border-bottom: none;
+        }
+
+        .label {
+            font-weight: 800;
+            padding-left: 24px;
+            color: #4b5563;
+        }
+
+        .colon {
+            text-align: center;
+            font-weight: 700;
+            color: #9ca3af;
+        }
+
+        .value {
+            padding-left: 22px;
+            font-weight: 500;
+        }
+
+        .value.green {
+            color: #0f7a35;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .raise-btn {
+            width: 100%;
+            max-width: 350px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #22c55e, #0f7a35);
+            color: #ffffff;
+            display: flex;
+            padding: 16px 28px;
+            font-size: 24px;
+            font-weight: 900;
+            margin: 30px auto 0 auto;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            box-shadow: 0 8px 20px rgba(15, 122, 53, 0.3);
+            transition: 0.2s;
+        }
+
+        .raise-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .note {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            color: #4b5563;
+        }
+
+        .note-icon {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #0f7a35;
+            color: #ffffff;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+        }
+
+        .note-icon svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .note strong {
+            margin-right: 4px;
+            color: #111111;
+        }
+
+        @media (max-width: 900px) {
+            body {
+                padding: 16px;
+            }
+
+            .topbar {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 16px;
+            }
+
+            .logo {
+                margin: auto;
+                width: 180px;
+            }
+
+            .title h1 {
+                font-size: 28px;
+            }
+
+            .pill {
+                min-height: 44px;
+                font-size: 15px;
+                padding: 0 14px;
+                margin: 10px auto 0 auto;
+            }
+
+            .row {
+                font-size: 16px;
+                grid-template-columns: 1.2fr 20px 1.5fr;
+                padding: 8px 0;
+            }
+
+            .label {
+                padding-left: 12px;
+            }
+
+            .value {
+                padding-left: 10px;
+            }
+
+            .raise-btn {
+                font-size: 20px;
+                padding: 14px 20px;
+            }
+
+            .note {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="page">
+        <header class="topbar">
+            <img src="logo.png" alt="Akshaya Patra Logo" class="logo" />
+
+            <div class="title">
+                <h1>Asset Details</h1>
+            </div>
+
+            <div class="pill asset-id">
+                <i data-lucide="tag"></i>
+                ASSET :
+                <span id="assetTagHeader">Loading...</span>
+            </div>
+        </header>
+
+        <section class="content">
+            <div>
+                <div class="section-title">
+                    <div class="circle-icon">
+                        <i data-lucide="clipboard-list"></i>
+                    </div>
+                    <h2>Equipment Information</h2>
+                </div>
+
+                <div class="details-table">
+                    <div class="row">
+                        <div class="label">Equipment Model</div>
+                        <div class="colon">:</div>
+                        <div class="value" id="equipmentModel">Loading...</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="label">Asset Tag</div>
+                        <div class="colon">:</div>
+                        <div class="value" id="assetTag">Loading...</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="label">Serial Number</div>
+                        <div class="colon">:</div>
+                        <div class="value" id="serialNumber">Loading...</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="label">Manufacturer</div>
+                        <div class="colon">:</div>
+                        <div class="value" id="manufacturer">Loading...</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="label">Location</div>
+                        <div class="colon">:</div>
+                        <div class="value" id="location">Loading...</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="label">Status</div>
+                        <div class="colon">:</div>
+                        <div class="value green" id="status">Loading...</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <button class="raise-btn" id="raiseComplaintBtn">
+            <i data-lucide="file-plus-2"></i>
+            RAISE COMPLAINT
+        </button>
+
+        <p class="note">
+            <span class="note-icon">
+                <i data-lucide="info"></i>
+            </span>
+            <span><strong>Note:</strong> If you are facing any issue with this equipment, please raise a
+                complaint.</span>
+        </p>
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        const params = new URLSearchParams(window.location.search);
+        let incomingId = params.get("id"); // URL માંથી આઈડી/ટેગ લાવીએ
+
+        async function loadAsset() {
+            if (!incomingId) {
+                alert("No Asset Tag or ID found in URL.");
+                return;
+            }
+
+            incomingId = incomingId.trim();
+
+            try {
+                let response;
+
+                // 🎯 સ્માર્ટ ચેકિંગ લોજિક: જો incomingId માત્ર નંબર છે (જેમ કે 149)
+                if (!isNaN(incomingId)) {
+                    console.log(`Numeric ID detected (${incomingId}). Fetching from hardware API...`);
+                    // જો તે ફક્ત નંબર હોય, તો પહેલા આપણી Node API ને કહીશું કે ટેગ શોધી આપે
+                    response = await fetch(`http://localhost:3000/hardware/${incomingId}`);
+
+                    // જો રિસ્પોન્સ ડાયરેક્ટ વેબપેજ રીડાયરેક્ટ કરે, તો બ્રાઉઝર ઓટોમેટિક સાચા ટેગ સાથે રીલોડ થઈ જશે
+                    if (response.redirected) {
+                        window.location.href = response.url;
+                        return;
+                    }
+                }
+                // 🎯 જો તે સાદો ટેક્સ્ટ એસેટ ટેગ છે (જેમ કે TSF0149)
+                else {
+                    console.log(`Asset Tag detected (${incomingId}). Fetching via Snipe Tag API...`);
+                    response = await fetch(`http://localhost:3000/api/snipe/asset/${incomingId}`);
+                }
+
+                if (!response.ok)
+                    throw new Error("Unable to fetch asset from server.");
+
+                const result = await response.json();
+
+                if (!result.success) {
+                    throw new Error(result.error || "Asset not found");
+                }
+
+                // UI માં બધો જ ડેટા પ્રોપરલી સેટ કરીએ
+                document.getElementById("equipmentModel").textContent = result.assetModel || "N/A";
+                document.getElementById("assetTag").textContent = result.assetTag || "N/A";
+                document.getElementById("serialNumber").textContent = result.serialNumber || "N/A";
+                document.getElementById("manufacturer").textContent = result.assetManufacturer || "N/A";
+                document.getElementById("location").textContent = result.assetLocation || "N/A";
+                document.getElementById("status").textContent = result.assetStatus || "N/A";
+                document.getElementById("assetTagHeader").textContent = result.assetTag || "N/A";
+
+                // સાચા એસેટ ટેગ સાથે કમ્પ્લેઇન ફોર્મ ઓપન કરાવીએ
+                document.getElementById("raiseComplaintBtn").addEventListener("click", () => {
+                    console.log("Passing Asset Tag to form:", result.assetTag);
+                    window.location.href = `./complaint-form.html?id=${result.assetTag}`;
+                });
+
+            } catch (error) {
+                console.error(error);
+                alert("Failed to load equipment details: " + error.message);
+            }
+        }
+
+        loadAsset();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Track Complaint</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #fbfbf8;
+            color: #111111;
+            padding: 28px 46px;
+        }
+
+        .page {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #0f7a35;
+            margin-bottom: 34px;
+        }
+
+        .logo {
+            width: 220px;
+            height: auto;
+        }
+
+        .back-btn {
+            background: #eefaf2;
+            color: #0f7a35;
+            border: 1px solid #cdebd7;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(15, 122, 53, 0.1);
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .title h1 {
+            font-size: 36px;
+            color: #0f7a35;
+            text-transform: uppercase;
+        }
+
+        /* Search Section */
+        .search-container {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 16px;
+            font-size: 18px;
+            border: 2px solid #d7d7d7;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: #0f7a35;
+        }
+
+        .track-btn {
+            background: linear-gradient(135deg, #0f7a35, #064d23);
+            color: white;
+            border: none;
+            padding: 0 35px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .error-msg {
+            color: #9b0a0a;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: none;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        /* Timeline Box */
+        .tracking-box {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 40px 30px;
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+            display: none;
+        }
+
+        .status-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            border-bottom: 1px dashed #e5e7eb;
+        }
+
+        .status-badge {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .badge-pending {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .badge-assigned {
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+
+        .badge-repair {
+            background: #ffedd5;
+            color: #c2410c;
+        }
+
+        .badge-resolved {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            gap: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 29px;
+            top: 10px;
+            bottom: 10px;
+            width: 4px;
+            background: #e5e7eb;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-icon {
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            background: #e5e7eb;
+            color: #777777;
+            display: grid;
+            place-items: center;
+        }
+
+        .step-icon svg {
+            width: 26px;
+            height: 26px;
+        }
+
+        .step-info h3 {
+            font-size: 20px;
+            color: #9ca3af;
+        }
+
+        .step-info p {
+            font-size: 15px;
+            color: #9ca3af;
+        }
+
+        /* Status colors */
+        .step.done .step-icon {
+            background: #0f7a35;
+            color: white;
+        }
+
+        .step.done .step-info h3 {
+            color: #111111;
+            font-weight: 700;
+        }
+
+        .step.done .step-info p {
+            color: #4b5563;
+        }
+
+        .step.current .step-icon {
+            background: #fffbeb;
+            color: #d97706;
+            border: 3px solid #d97706;
+        }
+
+        .step.current .step-info h3 {
+            color: #d97706;
+            font-weight: 800;
+        }
+
+        .step.current .step-info p {
+            color: #111111;
+        }
+
+        /* RE-OPEN ACTION SECTION */
+        .reopen-container {
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 1px dashed #e5e7eb;
+            display: none;
+            text-align: center;
+        }
+
+        .reopen-btn {
+            background: #fef2f2;
+            color: #dc2626;
+            border: 2px solid #fca5a5;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.05);
+        }
+
+        .reopen-btn:hover {
+            background: #fee2e2;
+            border-color: #ef4444;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px;
+            }
+
+            .topbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .search-container {
+                flex-direction: column;
+            }
+
+            .track-btn {
+                padding: 15px;
+                justify-content: center;
+            }
+
+            .timeline::before {
+                left: 23px;
+            }
+
+            .step-icon {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="page">
+        <header class="topbar">
+            <img src="logo.png" alt="Akshaya Patra Logo" class="logo" />
+            <a href="index.html" class="back-btn">
+                <i data-lucide="home"></i> Back to Home
+            </a>
+        </header>
+
+        <div class="title">
+            <h1>Track Complaint Status</h1>
+        </div>
+
+        <div class="search-container">
+            <input type="text" id="complaintIdInput" class="search-input" placeholder="Enter Your Complaint ID" />
+            <button class="track-btn" id="trackBtn" onclick="window.checkStatus()">
+                <i data-lucide="search"></i> Track
+            </button>
+        </div>
+
+        <p id="errorMsg" class="error-msg"></p>
+
+        <div id="trackingBox" class="tracking-box">
+            <div class="status-header">
+                <h3>Complaint ID: <span id="displayId"></span></h3>
+                <span id="statusBadge" class="status-badge">PENDING</span>
+            </div>
+
+            <div class="timeline">
+                <div id="step1" class="step">
+                    <div class="step-icon"><i data-lucide="file-check-2"></i></div>
+                    <div class="step-info">
+                        <h3>Complaint Registered</h3>
+                        <p>Your complaint has been successfully logged.</p>
+                    </div>
+                </div>
+
+                <div id="step2" class="step">
+                    <div class="step-icon"><i data-lucide="user-check"></i></div>
+                    <div class="step-info">
+                        <h3>Technician Assigned</h3>
+                        <p>A technician has been assigned and is reviewing the Asset.</p>
+                    </div>
+                </div>
+
+                <div id="step3" class="step">
+                    <div class="step-icon"><i data-lucide="wrench"></i></div>
+                    <div class="step-info">
+                        <h3>Under Repair</h3>
+                        <p>The equipment is currently being repaired.</p>
+                    </div>
+                </div>
+
+                <div id="step4" class="step">
+                    <div class="step-icon"><i data-lucide="check-circle"></i></div>
+                    <div class="step-info">
+                        <h3>Resolved</h3>
+                        <p>The issue is fixed, and the equipment is working fine.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reopen-container" id="reopenContainer">
+                <button class="reopen-btn" id="reopenBtn" onclick="window.triggerReopen()">
+                    <i data-lucide="rotate-ccw"></i> Not Solved? Re-open Complaint
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        // **તમારા SQL API નો બેઝ URL**
+        const API_BASE_URL = "http://localhost:3000/api";
+
+        let currentComplaintId = null;
+        let currentComplaintData = null;
+        let pollingInterval = null;
+
+        // ૧. STATUS ચેક કરવા માટેનું ફંક્શન
+        window.checkStatus = async function () {
+            const inputVal = document.getElementById("complaintIdInput").value.trim().toUpperCase();
+            const trackingBox = document.getElementById("trackingBox");
+            const errorMsg = document.getElementById("errorMsg");
+            const displayId = document.getElementById("displayId");
+            const statusBadge = document.getElementById("statusBadge");
+            const trackBtn = document.getElementById("trackBtn");
+            const reopenContainer = document.getElementById("reopenContainer");
+
+            const s1 = document.getElementById("step1");
+            const s2 = document.getElementById("step2");
+            const s3 = document.getElementById("step3");
+            const s4 = document.getElementById("step4");
+            const steps = [s1, s2, s3, s4];
+
+            steps.forEach(s => s.className = "step");
+            errorMsg.style.display = "none";
+            reopenContainer.style.display = "none";
+            clearInterval(pollingInterval);
+
+            if (!inputVal) {
+                trackingBox.style.display = "none";
+                errorMsg.innerText = "Please enter a valid Complaint ID.";
+                errorMsg.style.display = "block";
+                return;
+            }
+
+            trackBtn.disabled = true;
+            trackBtn.innerText = "Searching...";
+
+            async function fetchComplaintDetails() {
+                try {
+                    // API માંથી સીધો ડેટા ફેચ થશે
+                    const response = await fetch(`${API_BASE_URL}/complaints/${inputVal}`);
+                    if (!response.ok) {
+                        throw new Error("Complaint not found");
+                    }
+
+                    const data = await response.json();
+                    currentComplaintId = inputVal;
+                    currentComplaintData = data;
+
+                    const currentStatus = data.status || "Pending";
+
+                    // UI અપડેટ કરો
+                    trackingBox.style.display = "block";
+                    displayId.innerText = inputVal;
+                    statusBadge.innerText = currentStatus;
+                    statusBadge.className = "status-badge";
+
+                    steps.forEach(s => s.className = "step");
+                    reopenContainer.style.display = "none";
+
+                    if (currentStatus === "Pending") {
+                        statusBadge.classList.add("badge-pending");
+                        s1.className = "step current";
+                    } else if (currentStatus === "Assigned" || currentStatus === "In Progress") {
+                        statusBadge.classList.add("badge-assigned");
+                        s1.className = "step done";
+                        s2.className = "step current";
+                    } else if (currentStatus === "Under Repair") {
+                        statusBadge.classList.add("badge-repair");
+                        s1.className = "step done";
+                        s2.className = "step done";
+                        s3.className = "step current";
+                    } else if (currentStatus === "Resolved") {
+                        statusBadge.classList.add("badge-resolved");
+                        s1.className = "step done";
+                        s2.className = "step done";
+                        s3.className = "step done";
+                        s4.className = "step done";
+
+                        // જો કમ્પ્લેઇન Resolved હોય તો જ Re-open કરવા દેવી
+                        reopenContainer.style.display = "block";
+                    }
+                    lucide.createIcons();
+
+                } catch (error) {
+                    console.error("SQL fetch error:", error);
+                    trackingBox.style.display = "none";
+                    errorMsg.innerText = "Complaint ID not found or server error!";
+                    errorMsg.style.display = "block";
+                    clearInterval(pollingInterval);
+                } finally {
+                    trackBtn.disabled = false;
+                    trackBtn.innerHTML = '<i data-lucide="search"></i> Track';
+                }
+            }
+
+            await fetchComplaintDetails();
+
+            // દર ૧૦ સેકન્ડે ડેટા આપોઆપ રીફ્રેશ કરવા માટે (Live updates)
+            pollingInterval = setInterval(fetchComplaintDetails, 10000);
+        }
+
+        // ૨. COMPLAINT RE-OPEN કરવા માટેનું ફંક્શન
+        window.triggerReopen = async function () {
+            if (!currentComplaintId || !currentComplaintData) return;
+
+            const reason = prompt("Enter reason for re-opening the ticket (Optional):");
+            const reopenBtn = document.getElementById("reopenBtn");
+
+            reopenBtn.disabled = true;
+            reopenBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Re-opening Ticket...`;
+
+            try {
+                // SQL API પર રિકવેસ્ટ મોકલો
+                const response = await fetch(`${API_BASE_URL}/complaints/reopen`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        complaintId: currentComplaintId,
+                        status: "Pending",
+                        remarks: reason || "Complaint re-opened by user."
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error("Update failed");
+                }
+
+                alert("Your complaint has been successfully re-opened. Admin is notified!");
+
+                // ડેટા અપડેટ થઈ ગયો હોવાથી UI ફરીથી રીફ્રેશ કરો
+                window.checkStatus();
+            } catch (error) {
+                console.error("Error updating SQL db:", error);
+                alert("Failed to re-open ticket. Server connection error.");
+            } finally {
+                reopenBtn.disabled = false;
+                reopenBtn.innerHTML = '<i data-lucide="rotate-ccw"></i> Not Solved? Re-open Complaint';
+                lucide.createIcons();
+            }
+        }
+
+        // પેજ લોડ થાય ત્યારે જો URL માં ID હોય તો સીધું ટ્રેકિંગ શરૂ કરો
+        window.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const idFromUrl = urlParams.get('id');
+            const savedID = localStorage.getItem("myComplaintID");
+
+            if (idFromUrl) {
+                document.getElementById("complaintIdInput").value = idFromUrl.trim().toUpperCase();
+                window.checkStatus();
+            } else if (savedID) {
+                document.getElementById("complaintIdInput").value = savedID;
+                window.checkStatus();
+            }
+        });
+    </script>
+</body>
+
+</html>
