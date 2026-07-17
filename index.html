@@ -351,11 +351,11 @@
             try {
                 let response;
 
-                // 🎯 સ્માર્ટ ચેકિંગ લોજિક: જો incomingId માત્ર નંબર છે (જેમ કે 149)
+       // 🎯 સ્માર્ટ ચેકિંગ લોજિક: જો incomingId માત્ર નંબર છે (જેમ કે 149)
                 if (!isNaN(incomingId)) {
                     console.log(`Numeric ID detected (${incomingId}). Fetching from hardware API...`);
-                    // જો તે ફક્ત નંબર હોય, તો પહેલા આપણી Node API ને કહીશું કે ટેગ શોધી આપે
-                    response = await fetch(`http://localhost:3000/hardware/${incomingId}`);
+                    // ⚠️ Localhost ની જગ્યાએ નવો IP એડ્રેસ સેટ કર્યો
+                    response = await fetch(`http://10.192.21.22:3000/hardware/${incomingId}`);
 
                     // જો રિસ્પોન્સ ડાયરેક્ટ વેબપેજ રીડાયરેક્ટ કરે, તો બ્રાઉઝર ઓટોમેટિક સાચા ટેગ સાથે રીલોડ થઈ જશે
                     if (response.redirected) {
@@ -366,7 +366,8 @@
                 // 🎯 જો તે સાદો ટેક્સ્ટ એસેટ ટેગ છે (જેમ કે TSF0149)
                 else {
                     console.log(`Asset Tag detected (${incomingId}). Fetching via Snipe Tag API...`);
-                    response = await fetch(`http://localhost:3000/api/snipe/asset/${incomingId}`);
+                    // ⚠️ અહીં પણ Localhost ની જગ્યાએ નવો IP એડ્રેસ સેટ કર્યો
+                    response = await fetch(`http://10.192.21.22:3000/api/snipe/asset/${incomingId}`);
                 }
 
                 if (!response.ok)
