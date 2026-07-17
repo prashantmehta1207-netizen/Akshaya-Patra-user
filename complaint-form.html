@@ -207,7 +207,8 @@
                 console.log("Fetching Snipe-IT info via backend for tag:", assetTag);
                 try {
                     // 🚀 સાચો બેકએન્ડ રુટ જે આપણે server.js માં સેટ કર્યો છે
-                    const response = await fetch(`http://localhost:3000/api/snipe/asset/${assetTag}`);
+                    // 'localhost' ની જગ્યાએ તારો નવો હોટસ્પોટ આઈપી નાખો
+                    const response = await fetch(`http://10.192.21.22:3000/api/snipe/asset/${assetTag}`);
                     if (response.ok) {
                         const data = await response.json();
                         if (data.success) {
