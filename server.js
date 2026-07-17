@@ -295,7 +295,11 @@ app.get('/api/snipe/asset/:tag', async (req, res) => {
 
 
 // Server Connection
-app.listen(3000, () => {
-    console.log('Server is running on http://localhost:3000');
-    console.log('Backend Email Service & Image Upload & Dynamic QR Redirect Ready!');
+const PORT = 3000;
+const HOST = '0.0.0.0'; // આ લખવાથી સર્વર બધા જ નેટવર્ક ઈન્ટરફેસ પર સાંભળશે
+
+app.listen(PORT, HOST, () => {
+    console.log(`🚀 Server is running on: http://localhost:${PORT}`);
+    console.log(`📱 Network Access (Mobile): http://10.192.21.22:${PORT}`);
+    console.log('✅ Backend Email Service & Image Upload & Dynamic QR Redirect Ready!');
 });
