@@ -2,310 +2,309 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Akshaya Patra Complaint Portal</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Akshaya Patra Complaint Portal</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
-    <main class="portal">
+    <main class="portal">
 
-        <header class="header">
-            <div class="brand">
-                <img src="logo.png" alt="Akshaya Patra Logo" class="logo" />
-                <div>
-                    <h2 style="color: #16a34a;">Akshaya Patra Complaint Portal</h2>
-                    <p>Submit, track and manage complaints professionally.</p>
-                </div>
-            </div>
-            <div class="header-divider"></div>
-            <div class="welcome-text">
-                <i data-lucide="circle-user-round"></i>
-                <span>Welcome to Akshaya Patra</span>
-            </div>
-            <div class="header-divider"></div>
-            <span class="badge">
-                <i data-lucide="headphones"></i>
-                Employee Support
-            </span>
-        </header>
+        <header class="header">
+            <div class="brand">
+                <img src="logo.png" alt="Akshaya Patra Logo" class="logo" />
+                <div>
+                    <h2 style="color: #16a34a;">Akshaya Patra Complaint Portal</h2>
+                    <p>Submit, track and manage complaints professionally.</p>
+                </div>
+            </div>
+            <div class="header-divider"></div>
+            <div class="welcome-text">
+                <i data-lucide="circle-user-round"></i>
+                <span>Welcome to Akshaya Patra</span>
+            </div>
+            <div class="header-divider"></div>
+            <span class="badge">
+                <i data-lucide="headphones"></i>
+                Employee Support
+            </span>
+        </header>
 
-        <section class="card">
-            <h2 class="section-title">
-                <i data-lucide="square-pen"></i>
-                Raise New Complaint
-            </h2>
+        <section class="card">
+            <h2 class="section-title">
+                <i data-lucide="square-pen"></i>
+                Raise New Complaint
+            </h2>
 
-            <form id="complaintForm" enctype="multipart/form-data">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="YourName">Your Name <span>*</span></label>
-                        <div class="field-control">
-                            <i data-lucide="user"></i>
-                            <input type="text" id="YourName" name="YourName" placeholder="Enter Your name" required />
-                        </div>
-                    </div>
+            <form id="complaintForm" enctype="multipart/form-data">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="YourName">Your Name <span>*</span></label>
+                        <div class="field-control">
+                            <i data-lucide="user"></i>
+                            <input type="text" id="YourName" name="YourName" placeholder="Enter Your name" required />
+                        </div>
+                    </div>
 
-                    <div class="form-group">
-                        <label for="phone">Phone Number <span>*</span></label>
-                        <div class="field-control">
-                            <i data-lucide="phone"></i>
-                            <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required />
-                        </div>
-                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number <span>*</span></label>
+                        <div class="field-control">
+                            <i data-lucide="phone"></i>
+                            <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required />
+                        </div>
+                    </div>
 
-                    <div class="form-group">
-                        <label for="category">Department<span>*</span></label>
-                        <div class="field-control select-control">
-                            <i data-lucide="panel-top"></i>
-                            <select id="category" name="category" required>
-                                <option value="">Select category</option>
-                                <option>Electrical</option>
-                                <option>IT</option>
-                                <option>Kitchen/Production</option>
-                                <option>Maintenance</option>
-                                <option>Mechanical</option>
-                            </select>
-                        </div>
-                    </div>
+                    <div class="form-group">
+                        <label for="category">Department<span>*</span></label>
+                        <div class="field-control select-control">
+                            <i data-lucide="panel-top"></i>
+                            <select id="category" name="category" required>
+                                <option value="">Select category</option>
+                                <option>Electrical</option>
+                                <option>IT</option>
+                                <option>Kitchen/Production</option>
+                                <option>Maintenance</option>
+                                <option>Mechanical</option>
+                            </select>
+                        </div>
+                    </div>
 
-                    <div class="form-group full">
-                        <label for="email">Email ID <span>*</span></label>
-                        <div class="field-control">
-                            <i data-lucide="mail"></i>
-                            <input type="email" id="email" name="email" placeholder="Enter email address" required />
-                        </div>
-                    </div>
+                    <div class="form-group full">
+                        <label for="email">Email ID <span>*</span></label>
+                        <div class="field-control">
+                            <i data-lucide="mail"></i>
+                            <input type="email" id="email" name="email" placeholder="Enter email address" required />
+                        </div>
+                    </div>
 
-                    <div class="form-group full">
-                        <label for="title">Complaint Title <span>*</span></label>
-                        <div class="field-control">
-                            <i data-lucide="message-square-text"></i>
-                            <input type="text" id="title" name="title" placeholder="Short complaint title" required />
-                        </div>
-                    </div>
+                    <div class="form-group full">
+                        <label for="title">Complaint Title <span>*</span></label>
+                        <div class="field-control">
+                            <i data-lucide="message-square-text"></i>
+                            <input type="text" id="title" name="title" placeholder="Short complaint title" required />
+                        </div>
+                    </div>
 
-                    <div class="form-group full">
-                        <label for="description">Complaint Description <small>(Optional)</small></label>
-                        <div class="field-control textarea-control">
-                            <i data-lucide="clipboard-list"></i>
-                            <textarea id="description" name="description" rows="4"
-                                placeholder="Write complaint details (optional)"></textarea>
-                        </div>
-                    </div>
+                    <div class="form-group full">
+                        <label for="description">Complaint Description <small>(Optional)</small></label>
+                        <div class="field-control textarea-control">
+                            <i data-lucide="clipboard-list"></i>
+                            <textarea id="description" name="description" rows="4"
+                                placeholder="Write complaint details (optional)"></textarea>
+                        </div>
+                    </div>
 
-                    <div class="form-group upload-group">
-                        <label for="photo">Upload Photo <small>(Optional)</small></label>
-                        <div class="field-control file-control">
-                            <i data-lucide="image"></i>
-                            <input type="file" id="photo" name="complaintImage" accept="image/*" />
-                        </div>
-                    </div>
+                    <div class="form-group upload-group">
+                        <label for="photo">Upload Photo <small>(Optional)</small></label>
+                        <div class="field-control file-control">
+                            <i data-lucide="image"></i>
+                            <input type="file" id="photo" name="complaintImage" accept="image/*" />
+                        </div>
+                    </div>
 
-                    <div class="form-group full">
-                        <label>Priority <span>*</span></label>
-                        <div class="priority-box">
-                            <input type="radio" id="low" name="priority" value="Low" required />
-                            <label for="low"><span class="ring green"></span>Low</label>
-                            <input type="radio" id="medium" name="priority" value="Medium" />
-                            <label for="medium"><span class="ring yellow"></span>Medium</label>
-                            <input type="radio" id="high" name="priority" value="High" />
-                            <label for="high"><span class="ring red"></span>High</label>
-                        </div>
-                    </div>
-                </div>
+                    <div class="form-group full">
+                        <label>Priority <span>*</span></label>
+                        <div class="priority-box">
+                            <input type="radio" id="low" name="priority" value="Low" required />
+                            <label for="low"><span class="ring green"></span>Low</label>
+                            <input type="radio" id="medium" name="priority" value="Medium" />
+                            <label for="medium"><span class="ring yellow"></span>Medium</label>
+                            <input type="radio" id="high" name="priority" value="High" />
+                            <label for="high"><span class="ring red"></span>High</label>
+                        </div>
+                    </div>
+                </div>
 
-                <div class="actions">
-                    <button type="submit" class="submit-btn" id="submitBtn">
-                        <i data-lucide="send"></i>
-                        Submit Complaint
-                    </button>
-                    <button type="reset" class="reset-btn">
-                        <i data-lucide="rotate-ccw"></i>
-                        Clear
-                    </button>
-                </div>
-            </form>
-        </section>
+                <div class="actions">
+                    <button type="submit" class="submit-btn" id="submitBtn">
+                        <i data-lucide="send"></i>
+                        Submit Complaint
+                    </button>
+                    <button type="reset" class="reset-btn">
+                        <i data-lucide="rotate-ccw"></i>
+                        Clear
+                    </button>
+                </div>
+            </form>
+        </section>
 
-        <aside>
-            <div class="card side-card">
-                <h2 class="section-title"><i data-lucide="image"></i> Photo Preview</h2>
-                <div class="preview">
-                    <img id="photoPreview" alt="Complaint photo preview"
-                        style="display: none; max-width: 100%; border-radius: 6px;" />
-                    <i data-lucide="image" class="empty-icon" id="emptyIcon"></i>
-                    <span id="previewText">No photo selected</span>
-                </div>
-            </div>
+        <aside>
+            <div class="card side-card">
+                <h2 class="section-title"><i data-lucide="image"></i> Photo Preview</h2>
+                <div class="preview">
+                    <img id="photoPreview" alt="Complaint photo preview"
+                        style="display: none; max-width: 100%; border-radius: 6px;" />
+                    <i data-lucide="image" class="empty-icon" id="emptyIcon"></i>
+                    <span id="previewText">No photo selected</span>
+                </div>
+            </div>
 
-            <div class="card side-card"
-                style="margin-top: 20px; background: #f8fafc; border-left: 4px solid #16a34a; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
-                <h2 class="section-title"
-                    style="color: #1e293b; display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
-                    <i data-lucide="help-circle"></i> Need Help?
-                </h2>
-                <p style="font-size: 14px; color: #64748b; margin: 0 0 15px 0; line-height: 1.5;">
-                    If you face any issues while submitting the form, feel free to contact employee support.
-                </p>
-                <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px; color: #334155;">
-                    <p style="margin: 0; display: flex; align-items: center; gap: 8px;">
-                        <strong><i data-lucide="phone" style="width: 14px; height: 14px; color: #16a34a;"></i>
-                            Extension:</strong> 9904222266
-                    </p>
-                    <p style="margin: 0; display: flex; align-items: center; gap: 8px;">
-                        <strong><i data-lucide="mail" style="width: 14px; height: 14px; color: #16a34a;"></i>
-                            Email:</strong> support@akshayapatra.org
-                    </p>
-                    <p style="margin: 0; display: flex; align-items: center; gap: 8px;">
-                        <strong><i data-lucide="clock" style="width: 14px; height: 14px; color: #16a34a;"></i>
-                            Timings:</strong> 9:00 AM - 6:00 PM
-                    </p>
-                </div>
-            </div>
+            <div class="card side-card"
+                style="margin-top: 20px; background: #f8fafc; border-left: 4px solid #16a34a; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                <h2 class="section-title"
+                    style="color: #1e293b; display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                    <i data-lucide="help-circle"></i> Need Help?
+                </h2>
+                <p style="font-size: 14px; color: #64748b; margin: 0 0 15px 0; line-height: 1.5;">
+                    If you face any issues while submitting the form, feel free to contact employee support.
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px; color: #334155;">
+                    <p style="margin: 0; display: flex; align-items: center; gap: 8px;">
+                        <strong><i data-lucide="phone" style="width: 14px; height: 14px; color: #16a34a;"></i>
+                            Extension:</strong> 9904222266
+                    </p>
+                    <p style="margin: 0; display: flex; align-items: center; gap: 8px;">
+                        <strong><i data-lucide="mail" style="width: 14px; height: 14px; color: #16a34a;"></i>
+                            Email:</strong> support@akshayapatra.org
+                    </p>
+                    <p style="margin: 0; display: flex; align-items: center; gap: 8px;">
+                        <strong><i data-lucide="clock" style="width: 14px; height: 14px; color: #16a34a;"></i>
+                            Timings:</strong> 9:00 AM - 6:00 PM
+                    </p>
+                </div>
+            </div>
 
-            <div class="card side-card"
-                style="margin-top: 20px; background: #fef2f2; border-left: 4px solid #ef4444; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
-                <h2 class="section-title"
-                    style="color: #991b1b; display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
-                    <i data-lucide="shield-alert" style="color: #ef4444;"></i> Safety Guidelines
-                </h2>
-                <ul
-                    style="padding-left: 18px; margin: 0; font-size: 13px; color: #7f1d1d; line-height: 1.6; font-weight: 500;">
-                    <li style="margin-bottom: 6px;">Do not attempt to fix critical machinery or electrical leaks on your
-                        own.</li>
-                    <li style="margin-bottom: 6px;">Block the area immediately if something spills or a machine is
-                        broken.</li>
-                    <li style="margin-bottom: 0;">Always wear your safety gear (gloves, caps, shoes) in the kitchen
-                        area.</li>
-                </ul>
-            </div>
-        </aside>
-    </main>
+            <div class="card side-card"
+                style="margin-top: 20px; background: #fef2f2; border-left: 4px solid #ef4444; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                <h2 class="section-title"
+                    style="color: #991b1b; display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
+                    <i data-lucide="shield-alert" style="color: #ef4444;"></i> Safety Guidelines
+                </h2>
+                <ul
+                    style="padding-left: 18px; margin: 0; font-size: 13px; color: #7f1d1d; line-height: 1.6; font-weight: 500;">
+                    <li style="margin-bottom: 6px;">Do not attempt to fix critical machinery or electrical leaks on your
+                        own.</li>
+                    <li style="margin-bottom: 6px;">Block the area immediately if something spills or a machine is
+                        broken.</li>
+                    <li style="margin-bottom: 0;">Always wear your safety gear (gloves, caps, shoes) in the kitchen
+                        area.</li>
+                </ul>
+            </div>
+        </aside>
+    </main>
 
-    <script type="module">
-        lucide.createIcons();
+    <script type="module">
+        lucide.createIcons();
 
-        const form = document.getElementById("complaintForm");
-        const submitBtn = document.getElementById("submitBtn");
-        const photoInput = document.getElementById("photo");
-        const photoPreview = document.getElementById("photoPreview");
-        const previewText = document.getElementById("previewText");
-        const emptyIcon = document.getElementById("emptyIcon");
+        const form = document.getElementById("complaintForm");
+        const submitBtn = document.getElementById("submitBtn");
+        const photoInput = document.getElementById("photo");
+        const photoPreview = document.getElementById("photoPreview");
+        const previewText = document.getElementById("previewText");
+        const emptyIcon = document.getElementById("emptyIcon");
 
-        const urlParams = new URLSearchParams(window.location.search);
-        // લિંકમાંથી આવતી 'id' ખરેખર એસેટ ટેગ (જેમ કે TSF0149) છે
-        const assetTag = urlParams.get("id");
+        const urlParams = new URLSearchParams(window.location.search);
+        // લિંકમાંથી આવતી 'id' ખરેખર એસેટ ટેગ (જેમ કે TSF0149) છે
+        const assetTag = urlParams.get("id");
 
-        let globalAssetData = null;
+        let globalAssetData = null;
 
-        // 1. ઓટોમેટિકલી પેજ લોડ થતા જ બેકએન્ડ મારફતે Snipe-IT માંથી ડેટા લાવવા માટે
-        window.addEventListener('DOMContentLoaded', async () => {
-            if (assetTag) {
-                console.log("Fetching Snipe-IT info via backend for tag:", assetTag);
-                try {
-                    // 🚀 સાચો બેકએન્ડ રુટ જે આપણે server.js માં સેટ કર્યો છે
-                    // 'localhost' ની જગ્યાએ તારો નવો હોટસ્પોટ આઈપી નાખો
-                    const response = await fetch(`http://10.192.21.22:3000/api/snipe/asset/${assetTag}`);
-                    if (response.ok) {
-                        const data = await response.json();
-                        if (data.success) {
-                            globalAssetData = data;
-                            console.log("Snipe-IT Asset loaded successfully:", globalAssetData);
-                        }
-                    }
-                } catch (err) {
-                    console.error("Failed to preload asset details from server:", err);
-                }
-            }
-        });
+        // 1. ઓટોમેટિકલી પેજ લોડ થતા જ બેકએન્ડ મારફતે Snipe-IT માંથી ડેટા લાવવા માટે
+        window.addEventListener('DOMContentLoaded', async () => {
+            if (assetTag) {
+                console.log("Fetching Snipe-IT info via backend for tag:", assetTag);
+                try {
+                    // 🚀 સાચો બેકએન્ડ રુટ જે આપણે server.js માં સેટ કર્યો છે
+                    const response = await fetch(`http://localhost:3000/api/snipe/asset/${assetTag}`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        if (data.success) {
+                            globalAssetData = data;
+                            console.log("Snipe-IT Asset loaded successfully:", globalAssetData);
+                        }
+                    }
+                } catch (err) {
+                    console.error("Failed to preload asset details from server:", err);
+                }
+            }
+        });
 
-        // 2. Photo Live Preview
-        photoInput.addEventListener("change", function () {
-            const file = this.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (event) {
-                    photoPreview.src = event.target.result;
-                    photoPreview.style.display = "block";
-                    previewText.style.display = "none";
-                    emptyIcon.style.display = "none";
-                };
-                reader.readAsDataURL(file);
-            } else {
-                photoPreview.style.display = "none";
-                previewText.style.display = "block";
-                emptyIcon.style.display = "block";
-            }
-        });
+        // 2. Photo Live Preview
+        photoInput.addEventListener("change", function () {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    photoPreview.src = event.target.result;
+                    photoPreview.style.display = "block";
+                    previewText.style.display = "none";
+                    emptyIcon.style.display = "none";
+                };
+                reader.readAsDataURL(file);
+            } else {
+                photoPreview.style.display = "none";
+                previewText.style.display = "block";
+                emptyIcon.style.display = "block";
+            }
+        });
 
-        // 3. Form Submission Handler
-        form.addEventListener("submit", async function (event) {
-            event.preventDefault();
+        // 3. Form Submission Handler
+        form.addEventListener("submit", async function (event) {
+            event.preventDefault();
 
-            submitBtn.disabled = true;
-            submitBtn.textContent = "Submitting Complaint...";
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Submitting Complaint...";
 
-            try {
-                const userEmail = document.getElementById("email").value;
-                const userName = document.getElementById("YourName").value;
-                const selectedCategory = document.getElementById("category").value;
-                const complaintTitle = document.getElementById("title").value;
+            try {
+                const userEmail = document.getElementById("email").value;
+                const userName = document.getElementById("YourName").value;
+                const selectedCategory = document.getElementById("category").value;
+                const complaintTitle = document.getElementById("title").value;
 
-                const formData = new FormData();
+                const formData = new FormData();
 
-                // જો ઉપર લોડ વખતે Snipe-IT માંથી માહિતી મળી હોય તો તે જોડો
-                if (globalAssetData) {
-                    formData.append("assetId", globalAssetData.assetId || "");
-                    formData.append("assetTag", globalAssetData.assetTag || "");
-                    formData.append("assetModel", globalAssetData.assetModel || "");
-                    formData.append("assetManufacturer", globalAssetData.assetManufacturer || "");
-                    formData.append("assetLocation", globalAssetData.assetLocation || "");
-                    formData.append("assetStatus", globalAssetData.assetStatus || "");
-                } else {
-                    // જો કોઈ માહિતી ન મળી હોય તો ડાયરેક્ટ ટેગ મોકલો
-                    formData.append("assetTag", assetTag || "");
-                }
+                // જો ઉપર લોડ વખતે Snipe-IT માંથી માહિતી મળી હોય તો તે જોડો
+                if (globalAssetData) {
+                    formData.append("assetId", globalAssetData.assetId || "");
+                    formData.append("assetTag", globalAssetData.assetTag || "");
+                    formData.append("assetModel", globalAssetData.assetModel || "");
+                    formData.append("assetManufacturer", globalAssetData.assetManufacturer || "");
+                    formData.append("assetLocation", globalAssetData.assetLocation || "");
+                    formData.append("assetStatus", globalAssetData.assetStatus || "");
+                } else {
+                    // જો કોઈ માહિતી ન મળી હોય તો ડાયરેક્ટ ટેગ મોકલો
+                    formData.append("assetTag", assetTag || "");
+                }
 
-                formData.append("userName", userName);
-                formData.append("phone", document.getElementById("phone").value);
-                formData.append("category", selectedCategory);
-                formData.append("email", userEmail);
-                formData.append("title", complaintTitle);
-                formData.append("description", document.getElementById("description").value);
-                formData.append("priority", document.querySelector('input[name="priority"]:checked')?.value || "Low");
+                formData.append("userName", userName);
+                formData.append("phone", document.getElementById("phone").value);
+                formData.append("category", selectedCategory);
+                formData.append("email", userEmail);
+                formData.append("title", complaintTitle);
+                formData.append("description", document.getElementById("description").value);
+                formData.append("priority", document.querySelector('input[name="priority"]:checked')?.value || "Low");
 
-                if (photoInput.files[0]) {
-                    formData.append("complaintImage", photoInput.files[0]);
-                }
+                if (photoInput.files[0]) {
+                    formData.append("complaintImage", photoInput.files[0]);
+                }
 
-                console.log("Sending complaint to backend server...");
-                const backendResponse = await fetch("http://localhost:3000/api/complaints", {
-                    method: "POST",
-                    body: formData
-                });
+                console.log("Sending complaint to backend server...");
+                const backendResponse = await fetch("http://localhost:3000/api/complaints", {
+                    method: "POST",
+                    body: formData
+                });
 
-                if (!backendResponse.ok) {
-                    throw new Error("Server returned an error. Make sure server.js is running.");
-                }
+                if (!backendResponse.ok) {
+                    throw new Error("Server returned an error. Make sure server.js is running.");
+                }
 
-                const result = await backendResponse.json();
-                localStorage.setItem("myComplaintID", result.complaintId);
-                console.log("Saved successfully! ID:", result.complaintId);
+                const result = await backendResponse.json();
+                localStorage.setItem("myComplaintID", result.complaintId);
+                console.log("Saved successfully! ID:", result.complaintId);
 
-                // સફળતાપૂર્વક સબમિટ થયા પછી રીડાયરેક્ટ કરો
-                window.location.href = "success.html";
+                // સફળતાપૂર્વક સબમિટ થયા પછી રીડાયરેક્ટ કરો
+                window.location.href = "success.html";
 
-            } catch (error) {
-                console.error("Submission Error:", error);
-                alert("Submission failed: Failed to fetch\nPlease verify your Node.js backend server is running on Port 3000.");
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i data-lucide="send"></i> Submit Complaint';
-            }
-        });
-    </script>
+            } catch (error) {
+                console.error("Submission Error:", error);
+                alert("Submission failed: Failed to fetch\nPlease verify your Node.js backend server is running on Port 3000.");
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i data-lucide="send"></i> Submit Complaint';
+            }
+        });
+    </script>
 </body>
 
 </html>
