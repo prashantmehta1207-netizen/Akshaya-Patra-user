@@ -174,12 +174,9 @@
                 </h2>
                 <ul
                     style="padding-left: 18px; margin: 0; font-size: 13px; color: #7f1d1d; line-height: 1.6; font-weight: 500;">
-                    <li style="margin-bottom: 6px;">Do not attempt to fix critical machinery or electrical leaks on your
-                        own.</li>
-                    <li style="margin-bottom: 6px;">Block the area immediately if something spills or a machine is
-                        broken.</li>
-                    <li style="margin-bottom: 0;">Always wear your safety gear (gloves, caps, shoes) in the kitchen
-                        area.</li>
+                    <li style="margin-bottom: 6px;">Do not attempt to fix critical machinery or electrical leaks on your own.</li>
+                    <li style="margin-bottom: 6px;">Block the area immediately if something spills or a machine is broken.</li>
+                    <li style="margin-bottom: 0;">Always wear your safety gear (gloves, caps, shoes) in the kitchen area.</li>
                 </ul>
             </div>
         </aside>
@@ -196,18 +193,23 @@
         const emptyIcon = document.getElementById("emptyIcon");
 
         const urlParams = new URLSearchParams(window.location.search);
-        // લિંકમાંથી આવતી 'id' ખરેખર એસેટ ટેગ (જેમ કે TSF0149) છે
         const assetTag = urlParams.get("id");
 
         let globalAssetData = null;
+
+        // 🚀 ડાયનેમિક API એડ્રેસ સેટિંગ:
+        // જો તમે ફોન કે બીજા કમ્પ્યુટરમાંથી ઓપન કરો તો પણ આ સાચો હોસ્ટ IP એડ્રેસ પકડી લેશે.
+        // જો તમે GitHub Pages કે બીજા કોઈ સોર્સથી ઓપન કરો છો, તો અહિયાં તમારો સર્વર IP (10.192.21.22) બાય-ડીફોલ્ટ કનેક્ટ થઈ જશે.
+        const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        const backendHost = isLocalhost ? 'localhost' : '10.192.21.22'; 
+        const backendBaseUrl = `http://${backendHost}:3000`;
 
         // 1. ઓટોમેટિકલી પેજ લોડ થતા જ બેકએન્ડ મારફતે Snipe-IT માંથી ડેટા લાવવા માટે
         window.addEventListener('DOMContentLoaded', async () => {
             if (assetTag) {
                 console.log("Fetching Snipe-IT info via backend for tag:", assetTag);
                 try {
-                    // 🚀 સાચો બેકએન્ડ રુટ જે આપણે server.js માં સેટ કર્યો છે
-                    const response = await fetch(`http://localhost:3000/api/snipe/asset/${assetTag}`);
+                    const response = await fetch(`${backendBaseUrl}/api/snipe/asset/${assetTag}`);
                     if (response.ok) {
                         const data = await response.json();
                         if (data.success) {
@@ -264,7 +266,6 @@
                     formData.append("assetLocation", globalAssetData.assetLocation || "");
                     formData.append("assetStatus", globalAssetData.assetStatus || "");
                 } else {
-                    // જો કોઈ માહિતી ન મળી હોય તો ડાયરેક્ટ ટેગ મોકલો
                     formData.append("assetTag", assetTag || "");
                 }
 
@@ -280,8 +281,8 @@
                     formData.append("complaintImage", photoInput.files[0]);
                 }
 
-                console.log("Sending complaint to backend server...");
-                const backendResponse = await fetch("http://localhost:3000/api/complaints", {
+                console.log(`Sending complaint to backend: ${backendBaseUrl}/api/complaints`);
+                const backendResponse = await fetch(`${backendBaseUrl}/api/complaints`, {
                     method: "POST",
                     body: formData
                 });
@@ -299,9 +300,10 @@
 
             } catch (error) {
                 console.error("Submission Error:", error);
-                alert("Submission failed: Failed to fetch\nPlease verify your Node.js backend server is running on Port 3000.");
+                alert(`Submission failed: Please verify your Node.js backend server is running on IP: ${backendHost} and Port 3000.`);
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = '<i data-lucide="send"></i> Submit Complaint';
+                lucide.createIcons(); // Re-render icon on error reset
             }
         });
     </script>
