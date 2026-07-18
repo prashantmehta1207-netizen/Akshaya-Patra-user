@@ -152,7 +152,7 @@ app.post('/api/complaints', upload.single('complaintImage'), async (req, res) =>
 
         await db.query(query, values);
 
-        const adminEmail = "nikumj.bhavsar@akshayapatra.org";
+        const adminEmail = "nikunj.bhavsar@akshayapatra.org";
         let headEmail = "service.tapfguj@gmail.com";
 
         if (data.category === "Electrical") {
