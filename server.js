@@ -152,7 +152,7 @@ app.post('/api/complaints', upload.single('complaintImage'), async (req, res) =>
 
         await db.query(query, values);
 
-        const adminEmail = "prashantmehta1207@gmail.com";
+        const adminEmail = "nikumj.bhavsar@akshayapatra.org";
         let headEmail = "service.tapfguj@gmail.com";
 
         if (data.category === "Electrical") {
@@ -164,7 +164,7 @@ app.post('/api/complaints', upload.single('complaintImage'), async (req, res) =>
         } else if (data.category === "Maintenance") {
             headEmail = "pratap.rathod@akshayapatra.org, alpeshkumar.raval@akshayapatra.org";
         } else if (data.category === "Mechanical") {
-            headEmail = "mehtaprashant1209@gmail.com";
+            headEmail = "pratap.rathod@akshayapatra.org";
         }
 
         const trackingUrl = `https://prashantmehta1207-netizen.github.io/QR-Based-Asset-Service-Management-System/track-complaint.html?id=${complaintId}`;
